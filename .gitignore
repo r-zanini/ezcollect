@@ -1,6 +1,6 @@
 # Project exclude paths
-/project/project/target/
+/project/project/
 /project/target/
-/target/scala-2.13/classes/
-/target/streams/
-/target/web/
+/target/
+/.idea/
+/logs/
