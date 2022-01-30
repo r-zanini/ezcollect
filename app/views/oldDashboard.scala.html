@@ -1,0 +1,154 @@
+@(user: User)(implicit request: Http.Request, messages: play.i18n.Messages)
+@main("EZCollect", user, 2) {
+} {
+  <!--==================================
+=            User Profile            =
+===================================-->
+  <section class="dashboard section">
+      <!-- Container Start -->
+    <div class="container">
+        <!-- Row Start -->
+      <div class="row">
+        <div class="col-md-10 offset-md-1 col-lg-4 offset-lg-0">
+          <div class="sidebar">
+              <!-- User Widget -->
+            <div class="widget user-dashboard-profile">
+                <!-- User Name -->
+              @if(user.store==null) {
+                <h5 class="text-center">@user.userName </h5>
+              }
+            </div>
+              <!-- Dashboard Links -->
+            <div class="widget user-dashboard-menu">
+              <ul>
+                <li class="active"><a href=""><i class="fa fa-user"></i> My Orders</a></li>
+                <li><a href=""><i class="fa fa-bookmark-o"></i> Favourite Ads <span>5</span></a></li>
+                <li><a href=""><i class="fa fa-file-archive-o"></i>Archived Ads <span>12</span></a></li>
+                <li><a href=""><i class="fa fa-bolt"></i> Pending Approval<span>23</span></a></li>
+              </ul>
+            </div>
+
+
+          </div>
+        </div>
+        <div class="col-md-10 offset-md-1 col-lg-8 offset-lg-0">
+            <!-- Client -->
+          <div class="widget dashboard-container my-adslist">
+            <h3 class="widget-header">My Orders</h3>
+            <table class="table table-responsive product-dashboard-table">
+              <thead>
+                <tr>
+                  <th>Product Title</th>
+                  <th class="text-center">Pick Up Info</th>
+                  <th class="text-center">Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+
+                  <td class="product-details">
+                    <h3 class="title">Order ID: </h3>
+                    <span class="add-id"><strong>Customer Name: </strong> Nicola Dietrich</span>
+                    <span><strong>Phone Number: </strong><time>5559837576</time> </span>
+                    <span class="status active"><strong>Preparation Time (Min): </strong>45</span>
+                    <span class="location"><strong>Parcel Size: </strong>M</span>
+                  </td>
+                  <td class="product-category"><span class="categories">
+                    <span><strong>Pick Up Time: </strong><time></time> </span>
+                    <span class="status active"><strong>Pick Up Address: </strong>2334 sndbehe j3be3</span>
+                  </span></td>
+                  <td class="action" data-title="Action">
+                    <div class="">
+                      <ul class="list-inline justify-content-center">
+                        <li class="list-inline-item">
+                          <a data-toggle="tooltip" data-placement="top" title="view" class="view" href="">
+                            <i class="fa fa-eye"></i>
+                          </a>
+                        </li>
+                        <li class="list-inline-item">
+                          <a class="edit" data-toggle="tooltip" data-placement="top" title="Edit Pick Up Time" href="">
+                            <i class="fa fa-pencil"></i>
+                          </a>
+                        </li>
+                      </ul>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+
+          </div>
+            <!-- Shop   -->
+          <div class="widget dashboard-container my-adslist">
+            <h3 class="widget-header">Orders</h3>
+            <table class="table table-responsive product-dashboard-table">
+              <thead>
+                <tr>
+                  <th>Client Info</th>
+                  <th class="text-center">Pick Up Info</th>
+                  <th class="text-center">Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+
+                  <td class="product-details">
+                    <h3 class="title">Order ID: </h3>
+                    <span class="add-id"><strong>Customer Name: </strong> Nicola Dietrich</span>
+                    <span><strong>Phone Number: </strong><time>5559837576</time> </span>
+                    <span><strong>Customer Email: </strong>hhhhhh.com</span>
+                  </td>
+                  <td class="product-category"><span class="categories">
+                    <span class="location"><strong>Preparation Time (Min): </strong><time>10</time></span>
+                    <span><strong>Pick Up Time: </strong><time></time> </span>
+                    <span><strong>Parcel Size: </strong>M</span>
+                  </span></td>
+                  <td class="action" data-title="Action">
+                    <div class="">
+                      <ul class="list-inline justify-content-center">
+                        <li class="list-inline-item">
+                          <a data-toggle="tooltip" data-placement="top" title="view" class="view" href="">
+                            <i class="fa fa-eye"></i>
+                          </a>
+                        </li>
+                      </ul>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+
+          </div>
+
+
+            <!-- pagination -->
+          <div class="pagination justify-content-center">
+            <nav aria-label="Page navigation example">
+              <ul class="pagination">
+                <li class="page-item">
+                  <a class="page-link" href="#" aria-label="Previous">
+                    <span aria-hidden="true">&laquo;</span>
+                    <span class="sr-only">Previous</span>
+                  </a>
+                </li>
+                <li class="page-item"><a class="page-link" href="#">1</a></li>
+                <li class="page-item active"><a class="page-link" href="#">2</a></li>
+                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                <li class="page-item">
+                  <a class="page-link" href="#" aria-label="Next">
+                    <span aria-hidden="true">&raquo;</span>
+                    <span class="sr-only">Next</span>
+                  </a>
+                </li>
+              </ul>
+            </nav>
+          </div>
+            <!-- pagination -->
+
+        </div>
+      </div>
+        <!-- Row End -->
+    </div>
+      <!-- Container End -->
+  </section>
+}

@@ -3,22 +3,20 @@
 # ~~~~
 
 # Default path will just redirect to the computer list
-GET     /                           controllers.HomeController.index()
+GET     /                           controllers.HomeController.index(request:Request)
+GET     /login                           controllers.HomeController.loginPage(request:Request)
+POST     /login                           controllers.HomeController.loginAction(request:Request)
+GET     /logout                           controllers.HomeController.logoutAction(request:Request)
 
-# Computers list (look at the default values for pagination parameters)
-GET     /computers                  controllers.HomeController.list(request: Request, p:Int ?= 0, s ?= "name", o ?= "asc", f ?= "")
+GET     /dashboard                           controllers.HomeController.dashboardPage(request:Request)
 
-# Add computer
-GET     /computers/new              controllers.HomeController.create(request: Request)
-POST    /computers                  controllers.HomeController.save(request: Request)
+GET     /order/:orderId                           controllers.HomeController.orderPage(orderId:String, request:Request)
+GET     /order/toggle/:orderId                           controllers.HomeController.orderToggleProcessing(orderId:String, request:Request)
+GET     /order/fulfill/:orderId                           controllers.HomeController.orderFulfill(orderId:String, request:Request)
+GET     /order/schedule/:orderId                           controllers.HomeController.scheduleOrderPage(orderId:String, request:Request)
 
-# Edit existing computer
-GET     /computers/:id              controllers.HomeController.edit(request: Request, id:Long)
-POST    /computers/:id              controllers.HomeController.update(request: Request, id:Long)
-
-# Delete a computer
-POST    /computers/:id/delete       controllers.HomeController.delete(id:Long)
+GET     /orders                           controllers.HomeController.listStoreOrders(email:String = "",request: Request)
+GET     /stores                           controllers.HomeController.listStores(request: Request)
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.at(path="/public", file)
-
