@@ -19,7 +19,7 @@
                                     Number Of Employees: @if(order.parcelSize.equals("L")) {2} else {1} </h3>
                             }
                             <h3 class="widget-header">@if(order.pickupTime == null) {Pick Up not scheduled} else {Pick Up Time: @order.pickupTime.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"))}
-                                <a class="btn scheduling-a-time ml-auto @if(order.pickupTime != null && order.pickupTime.toLocalDate.equals(java.time.LocalDate.now())) {disabled}" href="@routes.HomeController.scheduleOrderPage(order.orderId)">
+                                <a class="btn scheduling-a-time ml-auto @if(order.pickupTime != null && order.pickupTime.toLocalDate.equals(java.time.LocalDate.now())) {disabled}" href="@routes.HomeController.scheduleOrderPage(order.orderId,"0")">
                                     Schedule Pick Up</a> </h3>
                             <table class="table table-responsive product-dashboard-table">
                                 <thead>

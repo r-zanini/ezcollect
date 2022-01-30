@@ -13,7 +13,7 @@ GET     /dashboard                           controllers.HomeController.dashboar
 GET     /order/:orderId                           controllers.HomeController.orderPage(orderId:String, request:Request)
 GET     /order/toggle/:orderId                           controllers.HomeController.orderToggleProcessing(orderId:String, request:Request)
 GET     /order/fulfill/:orderId                           controllers.HomeController.orderFulfill(orderId:String, request:Request)
-GET     /order/schedule/:orderId                           controllers.HomeController.scheduleOrderPage(orderId:String, request:Request)
+GET     /order/schedule/:orderId/:storeId                           controllers.HomeController.scheduleOrderPage(orderId:String, storeId:String, request:Request)
 
 GET     /orders                           controllers.HomeController.listStoreOrders(email:String = "",request: Request)
 GET     /stores                           controllers.HomeController.listStores(request: Request)

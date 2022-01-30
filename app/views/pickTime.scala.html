@@ -1,7 +1,7 @@
 @import java.util
 @import models.User
 
-@(user: User,stores: util.List[Store])(implicit request: Http.Request, messages: play.i18n.Messages)
+@(user: User, storeId: String, stores: util.List[Store], dates: util.List[java.time.LocalDate])(implicit request: Http.Request, messages: play.i18n.Messages)
 @main("EZCollect ", user, 2) {
 } {
     <section class="dashboard section">
@@ -16,20 +16,9 @@
                 <thead>
                   <tr>
                     <th>Time</th>
-                    <th class="text-center">Wed<br>01/26</th>
-                    <th class="text-center">Thu<br>01/26</th>
-                    <th class="text-center">Fri<br>01/26</th>
-                    <th class="text-center">Sat<br>01/26</th>
-                    <th class="text-center">Sun<br>01/26</th>
-                    <th class="text-center">Mon<br>01/26</th>
-                    <th class="text-center">Tue<br>01/26</th>
-                    <th>Day 8</th>
-                    <th>Day 9</th>
-                    <th>Day 10</th>
-                    <th>Day 11</th>
-                    <th>Day 12</th>
-                    <th>Day 13</th>
-                    <th>Day 14</th>
+                    @for(day: java.time.LocalDate <- dates) {
+                      <th class="text-center">@day.getDayOfWeek <br>@day.toString </th>
+                    }
                   </tr>
                 </thead>
                 <tbody>
@@ -52,6 +41,16 @@
                     <td class="p-0"><a class="btn scheduling-button scheduling-a">10:00 11:00</a></td>
                     <td class="p-0"><a class="btn scheduling-button scheduling-a">10:00 11:00</a></td>
                     <td class="p-0"><a class="btn scheduling-button scheduling-a">10:00 11:00</a></td>
+                  </tr>
+                  <tr class="p-0">
+                    <td class="p-0 text-center">11:00</td>
+                    <td class="p-0 scheduling-a"><a class="btn scheduling-button">11:00 12:00</a></td>
+                    <td class="p-0 scheduling-a"><a class="btn scheduling-button">11:00 12:00</a></td>
+                    <td class="p-0 scheduling-a"><a class="btn scheduling-button">11:00 12:00</a></td>
+                    <td class="p-0 scheduling-a"></td>
+                    <td class="p-0 scheduling-a"></td>
+                    <td class="p-0 scheduling-a"><a class="btn scheduling-button">11:00 12:00</a></td>
+                    <td class="p-0 scheduling-a"><a class="btn scheduling-button">11:00 12:00</a></td>
                   </tr>
                 </tbody>
               </table>

@@ -18,6 +18,7 @@ import javax.inject.Inject;
 import java.time.LocalDate;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Optional;
 import java.util.concurrent.CompletionStage;
 import java.util.concurrent.ExecutionException;
 
@@ -267,16 +268,19 @@ public class HomeController extends Controller {
 
 	//view order
 	@Security.Authenticated(UserAuthenticator.class)
-	public Result orderPage(String orderId, Http.Request request) throws ExecutionException, InterruptedException {
+	public CompletionStage<Result> orderPage(String orderId, Http.Request request) throws ExecutionException, InterruptedException {
 		User user = SessionManager.getUser(request);
-		OrderData order = orderRepository.find(orderId).toCompletableFuture().get().orElse(null);
-		if (order == null) return redirect(routes.HomeController.dashboardPage()).flashing("error", "Invalid order.");
-		if ((user.store == null && user.userName.equals(order.customerEmailAddress)) ||
-				(user.store != null && user.store == order.pickupStore)){
-			List<OrderEntry> entries = orderEntryRepository.listByOrder(orderId).toCompletableFuture().get();
-			return ok(views.html.order.render(user, order, entries, request, messagesApi.preferred(request)));
-		}
-		return redirect(routes.HomeController.dashboardPage()).flashing("error", "You are not authorized to see that order.");
+		CompletionStage<Optional<OrderData>> orderFuture = orderRepository.find(orderId);
+		return orderEntryRepository.listByOrder(orderId).thenCombineAsync(orderFuture, (entries, orderData) -> {
+			OrderData order = orderData.orElse(null);
+			if (order == null)
+				return redirect(routes.HomeController.dashboardPage()).flashing("error", "Invalid order.");
+			if ((user.store == null && user.userName.equals(order.customerEmailAddress)) ||
+					(user.store != null && user.store == order.pickupStore)) {
+				return ok(views.html.order.render(user, order, entries, request, messagesApi.preferred(request)));
+			}
+			return redirect(routes.HomeController.dashboardPage()).flashing("error", "You are not authorized to see that order.");
+		}, httpExecutionContext.current());
 	}
 
 	@Security.Authenticated(UserAuthenticator.class)
@@ -285,11 +289,11 @@ public class HomeController extends Controller {
 		OrderData order = orderRepository.find(orderId).toCompletableFuture().get().orElse(null);
 		if (order == null) return redirect(routes.HomeController.dashboardPage()).flashing("error", "Invalid order.");
 		if ((user.store == null && user.userName.equals(order.customerEmailAddress)) ||
-				(user.store != null && user.store == order.pickupStore)){
+				(user.store != null && user.store == order.pickupStore)) {
 			if (order.toggleProcessing()) {
-				return redirect(routes.HomeController.orderPage(orderId)).flashing("success", "The order is " + (order.isBeingProcessed?"now":"not") + " being processed.");
+				return redirect(routes.HomeController.orderPage(orderId)).flashing("success", "The order is " + (order.isBeingProcessed ? "now" : "not") + " being processed.");
 			} else {
-				return redirect(routes.HomeController.orderPage(orderId)).flashing("error","The order has already been completed.");
+				return redirect(routes.HomeController.orderPage(orderId)).flashing("error", "The order has already been completed.");
 			}
 		}
 		return redirect(routes.HomeController.dashboardPage()).flashing("error", "You are not authorized to see that order.");
@@ -301,11 +305,11 @@ public class HomeController extends Controller {
 		OrderData order = orderRepository.find(orderId).toCompletableFuture().get().orElse(null);
 		if (order == null) return redirect(routes.HomeController.dashboardPage()).flashing("error", "Invalid order.");
 		if ((user.store == null && user.userName.equals(order.customerEmailAddress)) ||
-				(user.store != null && user.store == order.pickupStore)){
+				(user.store != null && user.store == order.pickupStore)) {
 			if (order.fulfill()) {
 				return redirect(routes.HomeController.orderPage(orderId)).flashing("success", "The order is now completed.");
 			} else {
-				return redirect(routes.HomeController.orderPage(orderId)).flashing("error","The order had already been completed.");
+				return redirect(routes.HomeController.orderPage(orderId)).flashing("error", "The order had already been completed.");
 			}
 		}
 		return redirect(routes.HomeController.dashboardPage()).flashing("error", "You are not authorized to see that order.");
@@ -313,15 +317,21 @@ public class HomeController extends Controller {
 
 	//schedule pickup
 	@Security.Authenticated(UserAuthenticator.class)
-	public Result scheduleOrderPage(String orderId, Http.Request request) throws ExecutionException, InterruptedException {
+	public CompletionStage<Result> scheduleOrderPage(String orderId, String storeId, Http.Request request) throws ExecutionException, InterruptedException {
 		User user = SessionManager.getUser(request);
-		OrderData order = orderRepository.find(orderId).toCompletableFuture().get().orElse(null);
-		if (order == null) return redirect(routes.HomeController.dashboardPage()).flashing("error", "Invalid order.");
-		if (!user.userName.equals(order.customerEmailAddress) || (order.pickupTime!= null && !order.pickupTime.toLocalDate().equals(LocalDate.now()))) {
-			return redirect(routes.HomeController.orderPage(orderId)).flashing("error", "You are not authorized to schedule that order.");
-		}
-		List<Store> stores = storeRepository.listAll().toCompletableFuture().get();
-		return ok(views.html.pickTime.render(user,stores,request, messagesApi.preferred(request)));
+		CompletionStage<Optional<OrderData>> orderFuture = orderRepository.find(orderId);
+		return storeRepository.listAll().thenCombineAsync(orderFuture, (stores, orderData) -> {
+			OrderData order = orderData.orElse(null);
+			if (order == null)
+				return redirect(routes.HomeController.dashboardPage()).flashing("error", "Invalid order.");
+			if (!user.userName.equals(order.customerEmailAddress) || (order.pickupTime != null && !order.pickupTime.toLocalDate().equals(LocalDate.now()))) {
+				return redirect(routes.HomeController.orderPage(orderId)).flashing("error", "You are not authorized to schedule that order.");
+			}
+			LinkedList<LocalDate> dates = new LinkedList<>();
+			for (int i = 0; i < 14; i++){
+				dates.add(LocalDate.now().plusDays(i));
+			}
+			return ok(views.html.pickTime.render(user, storeId, stores, dates, request, messagesApi.preferred(request)));
+		}, httpExecutionContext.current());
 	}
-
 }
