@@ -1,10 +1,8 @@
-@(content: Html)
-
 <!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8">
-    <title>EZCollect</title>
+    <title>Order</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" type="text/css" media="screen" href="@routes.Assets.at("libs/bootstrap/css/bootstrap.min.css")">
     <link rel="stylesheet" type="text/css" media="screen" href="@routes.Assets.at("libs/bootstrap/css/bootstrap-slider.css")">
@@ -44,7 +42,7 @@
                 </li>
                 <li class="nav-item dropdown dropdown-slide">
                   <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="">Dashboard<span><i class="fa fa-angle-down"></i></span>
-                  </a>
+              </a>
 
                     <!-- Dropdown list -->
                   <div class="dropdown-menu">
@@ -54,8 +52,8 @@
                 </li>
                 <li class="nav-item dropdown dropdown-slide">
                   <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Pages <span><i class="fa fa-angle-down"></i></span>
-                  </a>
+                Pages <span><i class="fa fa-angle-down"></i></span>
+              </a>
                     <!-- Dropdown list -->
                   <div class="dropdown-menu">
                     <a class="dropdown-item" href="../../../../Downloads/classimax-premium/themes/classimax-premium/about-us.html">About Us</a>
@@ -65,8 +63,8 @@
                 </li>
                 <li class="nav-item dropdown dropdown-slide">
                   <a class="nav-link dropdown-toggle" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Listing <span><i class="fa fa-angle-down"></i></span>
-                  </a>
+                Listing <span><i class="fa fa-angle-down"></i></span>
+              </a>
                     <!-- Dropdown list -->
                   <div class="dropdown-menu">
                     <a class="dropdown-item" href="../../../../Downloads/classimax-premium/themes/classimax-premium/category.html">Ad-Gird View</a>
@@ -76,7 +74,7 @@
               </ul>
               <ul class="navbar-nav ml-auto mt-10">
                 <li class="nav-item">
-                  <a class="nav-link login-button" href="#">login</a>
+                  <a class="nav-link login-button" href="../../../../Downloads/classimax-premium/themes/classimax-premium/login.html">login</a>
                 </li>
               </ul>
             </div>
@@ -85,24 +83,84 @@
       </div>
     </div>
 
-
-    <section class="hero-area bg-1 text-center overly">
+      <!--==================================
+=            User Profile            =
+===================================-->
+    <section class="dashboard section">
         <!-- Container Start -->
       <div class="container">
-        <div class="row">
-          <div class="col-md-12">
-              <!-- Header Contetnt -->
-            <div class="content-block">
-              <h1>Buy & Sell Near You </h1>
-              <p>Join the millions who buy and sell from each other <br> everyday in local communities around the world</p>
+          <!-- Row Start -->
+        <div class="row justify-content-center">
+          <div class="col-md-10 offset-md-1 col-lg-8 offset-lg-0">
+              <!-- Client Order -->
+            <div class="widget dashboard-container my-adslist">
+              <h3 class="widget-header">Order Number: </h3>
+              <h3 class="widget-header">Pick Up Time: <a class="btn scheduling-a-time">Schedule Pick Up</a> </h3>
+              <table class="table table-responsive product-dashboard-table">
+                <thead>
+                  <tr>
+                    <th>Picture</th>
+                    <th>Product Title</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
 
+                    <td class="product-thumb">
+                      <img width="80px" height="auto" src="../../../../Downloads/classimax-premium/themes/classimax-premium/images/products/products-2.jpg" alt="image description"></td>
+                    <td class="product-details">
+                      <h3 class="title">Product Name</h3>
+                      <span class="add-id d-inline mr-2 oneOnTop"><strong>Product ID: </strong>59061770</span>
+                      <span class="d-inline mr-2 oneOnTop"><strong>Quantity: </strong><time>1</time> </span>
+                      <span class="d-inline oneOnTop"><strong>Total Entry Price: </strong><time>1.00$</time> </span>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
 
             </div>
+              <!-- Shop Order -->
+            <div class="widget dashboard-container my-adslist">
+              <h3 class="widget-header">Order Number: </h3>
+              <h3 class="widget-header">Number Of Employees: </h3>
+              <h3 class="widget-header">Pick Up Time: </h3>
+              <table class="table table-responsive product-dashboard-table">
+                <thead>
+                  <tr>
+                    <th>Picture</th>
+                    <th>Product Title</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+
+                    <td class="product-thumb">
+                      <img width="80px" height="auto" src="../../../../Downloads/classimax-premium/themes/classimax-premium/images/products/products-2.jpg" alt="image description"></td>
+                    <td class="product-details">
+                      <h3 class="title">Product Name</h3>
+                      <span class="add-id d-inline mr-2 oneOnTop"><strong>Product ID: </strong>59061770</span>
+                      <span class="d-inline mr-2 oneOnTop"><strong>Quantity: </strong><time>1</time> </span>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+
+            </div>
+            <div class="CenterButtons">
+              <form>
+                <button class="btn login-button">Start Preparing</button>
+                <button class="btn login-button">Complete Order</button>
+              </form>
+            </div>
+
+
           </div>
         </div>
+          <!-- Row End -->
       </div>
         <!-- Container End -->
     </section>
+
 
 @*    <main role="main" class="container-fluid">*@
 @*    @content*@

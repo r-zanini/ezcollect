@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Dashboard</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" type="text/css" media="screen" href="@routes.Assets.at("libs/bootstrap/css/bootstrap.min.css")">
+    <link rel="stylesheet" type="text/css" media="screen" href="@routes.Assets.at("libs/bootstrap/css/bootstrap-slider.css")">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/main.css")"/>
+
+    <link rel="stylesheet" type="text/css" media="screen" href="@routes.Assets.at("libs/font-awesome/css/font-awesome.min.css")">
+      <!-- Owl Carousel -->
+    <link rel="stylesheet" type="text/css" media="screen" href="@routes.Assets.at("libs/slick-carousel/slick/slick.css")">
+    <link rel="stylesheet" type="text/css" media="screen" href="@routes.Assets.at("libs/slick-carousel/slick/slick-theme.css")">
+      <!-- Fancy Box -->
+    <link rel="stylesheet" type="text/css" media="screen" href="@routes.Assets.at("libs/fancybox/jquery.fancybox.pack.css")">
+    <link rel="stylesheet" type="text/css" media="screen" href="@routes.Assets.at("libs/jquery-nice-select/css/nice-select.css")">
+      <!-- CUSTOM CSS -->
+    <link rel="stylesheet" type="text/css" media="screen" href="@routes.Assets.at("libs/css/style.css")">
+
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <nav class="navbar navbar-expand-lg navbar-light navigation">
+            <a class="navbar-brand" href="index.html">
+              <h1>EZCollect</h1>
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav ml-auto main-nav ">
+                <li class="nav-item active">
+                  <a class="nav-link" href="index.html">Home</a>
+                </li>
+                <li class="nav-item dropdown dropdown-slide">
+                  <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="">Dashboard<span><i class="fa fa-angle-down"></i></span>
+              </a>
+
+                    <!-- Dropdown list -->
+                  <div class="dropdown-menu">
+                    <a class="dropdown-item" href="../../../../Downloads/classimax-premium/themes/classimax-premium/dashboard.html">Dashboard</a>
+                    <a class="dropdown-item" href="../../../../Downloads/classimax-premium/themes/classimax-premium/dashboard-my-ads.html">Dashboard My Ads</a>
+                  </div>
+                </li>
+                <li class="nav-item dropdown dropdown-slide">
+                  <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Pages <span><i class="fa fa-angle-down"></i></span>
+              </a>
+                    <!-- Dropdown list -->
+                  <div class="dropdown-menu">
+                    <a class="dropdown-item" href="../../../../Downloads/classimax-premium/themes/classimax-premium/about-us.html">About Us</a>
+                    <a class="dropdown-item" href="../../../../Downloads/classimax-premium/themes/classimax-premium/contact-us.html">Contact Us</a>
+                    <a class="dropdown-item" href="../../../../Downloads/classimax-premium/themes/classimax-premium/user-profile.html">User Profile</a>
+                  </div>
+                </li>
+                <li class="nav-item dropdown dropdown-slide">
+                  <a class="nav-link dropdown-toggle" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Listing <span><i class="fa fa-angle-down"></i></span>
+              </a>
+                    <!-- Dropdown list -->
+                  <div class="dropdown-menu">
+                    <a class="dropdown-item" href="../../../../Downloads/classimax-premium/themes/classimax-premium/category.html">Ad-Gird View</a>
+                    <a class="dropdown-item" href="ad-listing-list.html">Ad-List View</a>
+                  </div>
+                </li>
+              </ul>
+              <ul class="navbar-nav ml-auto mt-10">
+                <li class="nav-item">
+                  <a class="nav-link login-button" href="../../../../Downloads/classimax-premium/themes/classimax-premium/login.html">login</a>
+                </li>
+              </ul>
+            </div>
+          </nav>
+        </div>
+      </div>
+    </div>
+
+      <!--==================================
+=            User Profile            =
+===================================-->
+    <section class="dashboard section">
+        <!-- Container Start -->
+      <div class="container">
+          <!-- Row Start -->
+        <div class="row">
+          <div class="col-md-10 offset-md-1 col-lg-4 offset-lg-0">
+            <div class="sidebar">
+                <!-- User Widget -->
+              <div class="widget user-dashboard-profile">
+                  <!-- User Name -->
+                <h5 class="text-center">Samanta Doe</h5>
+                <p>Address</p>
+                <p>Phone Number</p>
+                <p>Email</p>
+                <p>Joined February 06, 2017</p>
+              </div>
+                <!-- Dashboard Links -->
+              <div class="widget user-dashboard-menu">
+                <ul>
+                  <li class="active"><a href=""><i class="fa fa-user"></i> My Orders</a></li>
+                  <li><a href=""><i class="fa fa-bookmark-o"></i> Favourite Ads <span>5</span></a></li>
+                  <li><a href=""><i class="fa fa-file-archive-o"></i>Archived Ads <span>12</span></a></li>
+                  <li><a href=""><i class="fa fa-bolt"></i> Pending Approval<span>23</span></a></li>
+                </ul>
+              </div>
+
+
+
+            </div>
+          </div>
+          <div class="col-md-10 offset-md-1 col-lg-8 offset-lg-0">
+              <!-- Client -->
+            <div class="widget dashboard-container my-adslist">
+              <h3 class="widget-header">My Orders</h3>
+              <table class="table table-responsive product-dashboard-table">
+                <thead>
+                  <tr>
+                    <th>Product Title</th>
+                    <th class="text-center">Pick Up Info</th>
+                    <th class="text-center">Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+
+                    <td class="product-details">
+                      <h3 class="title">Order ID: </h3>
+                      <span class="add-id"><strong>Customer Name: </strong> Nicola Dietrich</span>
+                      <span><strong>Phone Number: </strong><time>5559837576</time> </span>
+                      <span class="status active"><strong>Preparation Time (Min): </strong>45</span>
+                      <span class="location"><strong>Parcel Size: </strong>M</span>
+                    </td>
+                    <td class="product-category"><span class="categories">
+                      <span><strong>Pick Up Time: </strong><time></time> </span>
+                      <span class="status active"><strong>Pick Up Address: </strong>2334 sndbehe j3be3</span>
+                    </span></td>
+                    <td class="action" data-title="Action">
+                      <div class="">
+                        <ul class="list-inline justify-content-center">
+                          <li class="list-inline-item">
+                            <a data-toggle="tooltip" data-placement="top" title="view" class="view" href="">
+                              <i class="fa fa-eye"></i>
+                            </a>
+                          </li>
+                          <li class="list-inline-item">
+                            <a class="edit" data-toggle="tooltip" data-placement="top" title="Edit Pick Up Time" href="">
+                              <i class="fa fa-pencil"></i>
+                            </a>
+                          </li>
+                        </ul>
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+
+            </div>
+              <!-- Shop   -->
+            <div class="widget dashboard-container my-adslist">
+              <h3 class="widget-header">Orders</h3>
+              <table class="table table-responsive product-dashboard-table">
+                <thead>
+                  <tr>
+                    <th>Client Info</th>
+                    <th class="text-center">Pick Up Info</th>
+                    <th class="text-center">Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+
+                    <td class="product-details">
+                      <h3 class="title">Order ID: </h3>
+                      <span class="add-id"><strong>Customer Name: </strong> Nicola Dietrich</span>
+                      <span><strong>Phone Number: </strong><time>5559837576</time> </span>
+                      <span><strong>Customer Email: </strong>hhhhhh.com</span>
+                    </td>
+                    <td class="product-category"><span class="categories">
+                      <span class="location"><strong>Preparation Time (Min): </strong><time>10</time></span>
+                      <span><strong>Pick Up Time: </strong><time></time> </span>
+                      <span><strong>Parcel Size: </strong>M</span>
+                    </span></td>
+                    <td class="action" data-title="Action">
+                      <div class="">
+                        <ul class="list-inline justify-content-center">
+                          <li class="list-inline-item">
+                            <a data-toggle="tooltip" data-placement="top" title="view" class="view" href="">
+                              <i class="fa fa-eye"></i>
+                            </a>
+                          </li>
+                        </ul>
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+
+            </div>
+
+
+            <!-- pagination -->
+            <div class="pagination justify-content-center">
+              <nav aria-label="Page navigation example">
+                <ul class="pagination">
+                  <li class="page-item">
+                    <a class="page-link" href="#" aria-label="Previous">
+                      <span aria-hidden="true">&laquo;</span>
+                      <span class="sr-only">Previous</span>
+                    </a>
+                  </li>
+                  <li class="page-item"><a class="page-link" href="#">1</a></li>
+                  <li class="page-item active"><a class="page-link" href="#">2</a></li>
+                  <li class="page-item"><a class="page-link" href="#">3</a></li>
+                  <li class="page-item">
+                    <a class="page-link" href="#" aria-label="Next">
+                      <span aria-hidden="true">&raquo;</span>
+                      <span class="sr-only">Next</span>
+                    </a>
+                  </li>
+                </ul>
+              </nav>
+            </div>
+              <!-- pagination -->
+
+          </div>
+        </div>
+          <!-- Row End -->
+      </div>
+        <!-- Container End -->
+    </section>
+
+
+@*    <main role="main" class="container-fluid">*@
+@*    @content*@
+@*    </main>*@
+
+  </body>
+</html>
